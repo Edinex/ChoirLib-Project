@@ -1,0 +1,159 @@
+/* =============================== */
+/* CHOIRLIB — PROFILE SETUP STYLES */
+/* =============================== */
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+/* Avatar section */
+.avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+
+.avatar-ring {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 2px dashed var(--primary);
+  background: var(--dark-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+
+.avatar-ring:hover {
+  border-color: var(--gold);
+}
+
+
+.avatar-ring i {
+  font-size: 2.5rem;
+  color: var(--text-muted);
+}
+
+
+.avatar-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+
+
+.avatar-badge {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 26px;
+  height: 26px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: var(--dark-bg);
+  font-weight: 700;
+  border: 2px solid var(--dark-bg);
+}
+
+
+.avatar-hint {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+
+/* Chips */
+.chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+
+.chip {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  border: 1px solid var(--dark-border);
+  color: var(--text-sec);
+  background: var(--dark-surface);
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+
+.chip:hover {
+  border-color: var(--primary);
+  color: var(--text-main);
+}
+
+
+.chip.selected {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+  font-weight: 500;
+}
+
+
+/* Choir input row */
+.choir-input-row {
+  display: flex;
+  gap: 8px;
+}
+
+
+.choir-input-row .form-input {
+  flex: 1;
+}
+
+
+.btn-join {
+  padding: 0 20px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+
+.btn-join:hover {
+  background: var(--primary-light);
+}
+
+
+.choir-hint {
+  font-size: 0.7rem;
+  margin-top: 6px;
+  color: var(--text-muted);
+}
+
+
+.choir-hint.success { color: var(--success); }
+.choir-hint.error   { color: var(--error); }

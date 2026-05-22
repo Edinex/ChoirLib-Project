@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChoirLib — Sign In</title>
+
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/login.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+
+  <!-- Hero Art Section -->
+  <div class="login-hero">
+    <div class="login-hero-glow"></div>
+    <i class="fa-solid fa-lock login-hero-icon"></i>
+  </div>
+
+
+  <!-- Header -->
+  <div class="screen-header">
+    <button class="back-btn" onclick="goBack()">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    <h2 class="screen-title">Welcome Back</h2>
+  </div>
+
+
+  <!-- Form Body -->
+  <div class="form-body">
+
+
+    <p class="form-sub">
+      Sign in to access your choir library
+    </p>
+
+
+    <!-- Success box (hidden by default) -->
+    <div id="login-success" class="success-box hidden">
+      <i class="fa-solid fa-circle-check"></i>
+      <span id="login-success-text"></span>
+    </div>
+
+
+    <!-- Error box (hidden by default) -->
+    <div id="login-error" class="error-box hidden">
+      <i class="fa-solid fa-circle-exclamation"></i>
+      <span id="login-error-text"></span>
+    </div>
+
+
+    <!-- Email -->
+    <div class="form-group">
+      <label class="form-label">Email Address</label>
+      <div class="input-icon-wrap">
+        <i class="fa-solid fa-envelope input-icon"></i>
+        <input
+          type="email"
+          id="login-email"
+          class="form-input input-with-icon"
+          placeholder="yourname@gmail.com"
+        >
+      </div>
+    </div>
+
+
+    <!-- Password -->
+    <div class="form-group">
+      <label class="form-label">Password</label>
+      <div class="password-wrap">
+        <div class="input-icon-wrap">
+          <i class="fa-solid fa-lock input-icon"></i>
+          <input
+            type="password"
+            id="login-password"
+            class="form-input input-with-icon"
+            placeholder="Enter your password"
+          >
+        </div>
+        <button class="toggle-pw" id="toggle-login-pw">
+          <i class="fa-solid fa-eye" id="login-pw-icon"></i>
+        </button>
+      </div>
+    </div>
+
+
+    <!-- Forgot password -->
+    <div class="forgot-row">
+      <span
+        class="forgot-link"
+        id="btn-forgot-password"
+      >
+        Forgot password?
+      </span>
+    </div>
+
+
+    <!-- Sign In Button -->
+    <button class="btn-gold" id="btn-sign-in">
+      Sign In
+      <i class="fa-solid fa-arrow-right"></i>
+    </button>
+
+
+    <!-- Biometric row -->
+    <div class="biometric-row">
+      <div class="biometric-line"></div>
+      <span class="biometric-text">or sign in with</span>
+      <div class="biometric-line"></div>
+    </div>
+
+
+    <!-- Social buttons -->
+    <div class="social-row">
+      <button class="social-btn" id="btn-google-login">
+        <i class="fa-brands fa-google"></i>
+        Google
+      </button>
+      <button class="social-btn" id="btn-facebook-login">
+        <i class="fa-brands fa-facebook"></i>
+        Facebook
+      </button>
+    </div>
+
+
+    <!-- Switch to register -->
+    <p class="switch-auth">
+      New to ChoirLib?
+      <span
+        class="gold link"
+        onclick="goToRegister()"
+      >
+        Create Account
+      </span>
+    </p>
+
+
+  </div>
+
+
+  <!-- Scripts -->
+   <script src="../js/supabase.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/login.js"></script>
+
+
+</body>
+</html>

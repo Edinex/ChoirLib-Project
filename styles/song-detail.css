@@ -1,0 +1,581 @@
+/* =============================== */
+/* CHOIRLIB — SONG DETAIL STYLES   */
+/* =============================== */
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+/* Hero */
+.detail-hero {
+  height: 160px;
+  background: linear-gradient(
+    160deg,
+    var(--dark-surface2),
+    var(--primary-dark)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+
+.hero-back {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.3);
+  border: none;
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+
+.hero-back:hover {
+  background: rgba(0,0,0,0.5);
+}
+
+
+.hero-emoji {
+  font-size: 4rem;
+}
+
+
+.hero-more {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.3);
+  border: none;
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+
+/* Song detail body */
+.song-detail-body {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  background: var(--dark-bg);
+  position: relative;
+}
+
+
+.song-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+
+.detail-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+
+.detail-composer {
+  font-size: 0.75rem;
+  color: var(--text-sec);
+}
+
+
+.save-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+  color: var(--text-sec);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+
+.save-btn.saved {
+  background: rgba(220,38,38,0.15);
+  border-color: #DC2626;
+  color: #F87171;
+}
+
+
+/* Tags */
+.tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+
+.tag {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.68rem;
+  font-weight: 500;
+  background: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+  color: var(--text-sec);
+}
+
+
+.tag-purple {
+  background: rgba(107,33,168,0.25);
+  border-color: var(--primary);
+  color: #C084FC;
+}
+
+
+.tag-gold {
+  background: rgba(212,160,23,0.2);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+
+.tag-green {
+  background: rgba(22,163,74,0.2);
+  border-color: #16A34A;
+  color: #4ADE80;
+}
+
+
+.tag-red {
+  background: rgba(220,38,38,0.2);
+  border-color: #DC2626;
+  color: #F87171;
+}
+
+
+/* Tabs */
+.tabs-row {
+  display: flex;
+  border-bottom: 1px solid var(--dark-surface);
+  margin-bottom: 16px;
+}
+
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+
+.tab:hover { color: var(--text-sec); }
+
+
+.tab.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+  font-weight: 600;
+}
+
+
+.tab-content {
+  display: none;
+}
+
+
+.tab-content.active {
+  display: block;
+}
+
+
+/* Notation toggle */
+.notation-toggle {
+  display: flex;
+  background: var(--dark-surface);
+  border-radius: 10px;
+  padding: 3px;
+  gap: 3px;
+  margin-bottom: 14px;
+}
+
+
+.notation-btn {
+  flex: 1;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  cursor: pointer;
+  background: none;
+  color: var(--text-sec);
+  transition: all 0.2s;
+}
+
+
+.notation-btn.active {
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+}
+
+
+/* PDF preview */
+.pdf-preview {
+  background: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+
+.pdf-icon {
+  font-size: 2.5rem;
+  color: var(--error);
+  margin-bottom: 8px;
+}
+
+
+.pdf-name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+
+.pdf-pages {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+
+/* Action buttons */
+.action-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+
+.action-btn {
+  padding: 11px;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s;
+  margin-bottom: 0;
+}
+
+
+/* Audio player */
+.audio-card {
+  background: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+
+.audio-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+.audio-title i {
+  color: var(--gold);
+}
+
+
+.audio-progress {
+  height: 4px;
+  background: var(--dark-surface2);
+  border-radius: 2px;
+  margin-bottom: 6px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+
+.audio-fill {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 2px;
+  transition: width 0.1s;
+}
+
+
+.audio-times {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+
+.audio-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+
+.audio-btn {
+  background: none;
+  border: none;
+  color: var(--text-sec);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+
+.audio-btn:hover { color: var(--text-main); }
+
+
+.audio-play {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: background 0.2s, transform 0.1s;
+  box-shadow: 0 4px 12px rgba(107,33,168,0.4);
+}
+
+
+.audio-play:hover {
+  background: var(--primary-light);
+  transform: scale(1.05);
+}
+
+
+.audio-play.playing {
+  background: var(--gold);
+}
+
+
+/* Video cards */
+.video-card {
+  background: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+
+.video-thumb {
+  height: 120px;
+  background: var(--dark-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: var(--text-muted);
+  position: relative;
+}
+
+
+.tiktok-thumb {
+  background: #010101;
+  color: #69C9D0;
+}
+
+
+.video-play-btn {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(212,160,23,0.9);
+  border: none;
+  color: var(--dark-bg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: transform 0.2s;
+}
+
+
+.video-play-btn:hover {
+  transform: scale(1.1);
+}
+
+
+.video-info {
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.video-title {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+
+.video-platform {
+  font-size: 0.68rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+
+.youtube { color: #FF0000; }
+.tiktok  { color: #69C9D0; }
+
+
+/* Lyrics */
+.lyrics-box {
+  background: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+  border-radius: 14px;
+  padding: 20px;
+  font-size: 0.88rem;
+  color: var(--text-sec);
+  line-height: 2;
+  white-space: pre-line;
+}
+
+
+/* Paid overlay */
+.paid-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(13,1,24,0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  border-radius: 0;
+}
+
+
+.paid-card {
+  background: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+  border-radius: 20px;
+  padding: 28px 24px;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+
+.paid-icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+
+.paid-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+
+.paid-desc {
+  font-size: 0.78rem;
+  color: var(--text-sec);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+
+.pay-methods {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 8px;
+  margin: 14px 0;
+}
+
+
+.pay-method {
+  background: var(--dark-bg);
+  border: 1px solid var(--dark-border);
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 0.65rem;
+  color: var(--text-sec);
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+
+.pay-method:hover {
+  border-color: var(--primary);
+  color: var(--text-main);
+}
+
+
+.pay-note {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}

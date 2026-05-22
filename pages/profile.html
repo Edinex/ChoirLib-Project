@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChoirLib — Profile</title>
+
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/home.css">
+  <link rel="stylesheet" href="../styles/profile.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+
+  <!-- PROFILE BANNER -->
+  <div class="profile-banner">
+    <div class="profile-banner-overlay"></div>
+    <button class="profile-edit-btn"
+      id="btn-edit-profile">
+      <i class="fa-solid fa-pen"></i>
+      Edit Profile
+    </button>
+  </div>
+
+
+  <!-- PROFILE AVATAR -->
+  <div class="profile-avatar-wrap">
+    <div class="profile-avatar" id="profile-avatar">
+      👤
+    </div>
+  </div>
+
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content profile-content">
+
+
+    <!-- Name & Role -->
+    <div class="profile-name-section">
+      <h2 class="profile-name" id="profile-name">
+        Loading...
+      </h2>
+      <div class="profile-role" id="profile-role">
+        🎵 Alto · Chorister
+      </div>
+      <div class="profile-location">
+        <i class="fa-solid fa-location-dot"></i>
+        Cameroon · Joined 2026
+      </div>
+    </div>
+
+
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num"
+          id="profile-downloads">0</div>
+        <div class="stat-label">Downloads</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Choirs</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">12</div>
+        <div class="stat-label">Uploads</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num"
+          id="profile-purchases">0</div>
+        <div class="stat-label">Purchases</div>
+      </div>
+    </div>
+
+
+    <!-- Badges -->
+    <div class="section-header">
+      <h3 class="section-title">My Badges</h3>
+    </div>
+    <div class="badges-row">
+      <div class="badge-item gold-badge">
+        <i class="fa-solid fa-trophy"></i>
+        Top Contributor
+      </div>
+      <div class="badge-item gold-badge">
+        <i class="fa-solid fa-download"></i>
+        100 Downloads
+      </div>
+      <div class="badge-item">
+        <i class="fa-solid fa-upload"></i>
+        First Upload
+      </div>
+      <div class="badge-item">
+        <i class="fa-solid fa-people-group"></i>
+        Community Member
+      </div>
+    </div>
+
+
+    <!-- My Choirs -->
+    <div class="section-header">
+      <h3 class="section-title">My Choirs</h3>
+      <span class="section-link">Manage</span>
+    </div>
+    <div class="my-choirs-list">
+
+
+      <div class="choir-item">
+        <div class="choir-item-icon">🎵</div>
+        <div class="choir-item-info">
+          <div class="choir-item-name">
+            St. Joseph's Cathedral Choir
+          </div>
+          <div class="choir-item-meta">
+            Alto · 42 members
+          </div>
+        </div>
+        <i class="fa-solid fa-chevron-right
+          choir-item-arrow"></i>
+      </div>
+
+
+      <div class="choir-item">
+        <div class="choir-item-icon">🎶</div>
+        <div class="choir-item-info">
+          <div class="choir-item-name">
+            Youth Praise Ensemble
+          </div>
+          <div class="choir-item-meta">
+            Alto · 28 members
+          </div>
+        </div>
+        <i class="fa-solid fa-chevron-right
+          choir-item-arrow"></i>
+      </div>
+
+
+    </div>
+
+
+    <!-- Recent Downloads -->
+    <div class="section-header">
+      <h3 class="section-title">Recent Downloads</h3>
+      <span class="section-link">See all</span>
+    </div>
+    <div class="downloads-list" id="downloads-list">
+      <div class="empty-state" id="empty-downloads">
+        <i class="fa-solid fa-download"></i>
+        <p>No downloads yet</p>
+        <span>
+          Songs you download will appear here
+        </span>
+      </div>
+    </div>
+
+
+    <!-- Settings Section -->
+    <div class="section-header" style="margin-top:8px;">
+      <h3 class="section-title">Settings</h3>
+    </div>
+
+
+    <div class="settings-list">
+
+
+      <div class="settings-item"
+        id="setting-subscription">
+        <div class="settings-icon"
+          style="background:rgba(212,160,23,0.1);">
+          <i class="fa-solid fa-crown"
+            style="color:var(--gold);"></i>
+        </div>
+        <div class="settings-text">
+          <div class="settings-label">
+            Subscription
+          </div>
+          <div class="settings-sub gold">
+            Free Plan — Upgrade
+          </div>
+        </div>
+        <i class="fa-solid fa-chevron-right
+          settings-arrow"></i>
+      </div>
+
+
+      <div class="settings-item"
+        id="setting-dark-mode">
+        <div class="settings-icon"
+          style="background:rgba(107,33,168,0.1);">
+          <i class="fa-solid fa-moon"
+            style="color:var(--primary-light);"></i>
+        </div>
+        <div class="settings-text">
+          <div class="settings-label">Dark Mode</div>
+          <div class="settings-sub">
+            Currently enabled
+          </div>
+        </div>
+        <div class="toggle-switch active"
+          id="dark-mode-toggle">
+          <div class="toggle-knob"></div>
+        </div>
+      </div>
+
+
+      <div class="settings-item"
+        id="setting-notifications">
+        <div class="settings-icon"
+          style="background:rgba(37,99,235,0.1);">
+          <i class="fa-solid fa-bell"
+            style="color:#2563EB;"></i>
+        </div>
+        <div class="settings-text">
+          <div class="settings-label">
+            Notifications
+          </div>
+          <div class="settings-sub">All enabled</div>
+        </div>
+        <div class="toggle-switch active"
+          id="notif-toggle">
+          <div class="toggle-knob"></div>
+        </div>
+      </div>
+
+
+      <div class="settings-item"
+        id="setting-language">
+        <div class="settings-icon"
+          style="background:rgba(22,163,74,0.1);">
+          <i class="fa-solid fa-globe"
+            style="color:#16A34A;"></i>
+        </div>
+        <div class="settings-text">
+          <div class="settings-label">Language</div>
+          <div class="settings-sub">English</div>
+        </div>
+        <i class="fa-solid fa-chevron-right
+          settings-arrow"></i>
+      </div>
+
+
+      <div class="settings-item"
+        id="setting-privacy">
+        <div class="settings-icon"
+          style="background:rgba(107,33,168,0.1);">
+          <i class="fa-solid fa-shield-halved"
+            style="color:var(--primary-light);"></i>
+        </div>
+        <div class="settings-text">
+          <div class="settings-label">
+            Privacy & Security
+          </div>
+          <div class="settings-sub">
+            Manage your data
+          </div>
+        </div>
+        <i class="fa-solid fa-chevron-right
+          settings-arrow"></i>
+      </div>
+
+
+      <div class="settings-item"
+        id="setting-help">
+        <div class="settings-icon"
+          style="background:rgba(37,99,235,0.1);">
+          <i class="fa-solid fa-circle-question"
+            style="color:#2563EB;"></i>
+        </div>
+        <div class="settings-text">
+          <div class="settings-label">Help & FAQ</div>
+          <div class="settings-sub">
+            Get support
+          </div>
+        </div>
+        <i class="fa-solid fa-chevron-right
+          settings-arrow"></i>
+      </div>
+
+
+      <!-- Logout -->
+      <div class="settings-item logout-item"
+        id="setting-logout">
+        <div class="settings-icon"
+          style="background:rgba(220,38,38,0.1);">
+          <i class="fa-solid fa-right-from-bracket"
+            style="color:#DC2626;"></i>
+        </div>
+        <div class="settings-text">
+          <div class="settings-label logout-label">
+            Log Out
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+    <!-- App Version -->
+    <div class="app-version">
+      ChoirLib v1.0.0 · Made with ❤️ in Cameroon
+    </div>
+
+
+  </div>
+
+
+  <!-- BOTTOM NAV -->
+  <div class="bottom-nav">
+    <button class="bnav-item"
+      onclick="goToHome()">
+      <i class="fa-solid fa-house bnav-icon"></i>
+      <span>Home</span>
+    </button>
+    <button class="bnav-item"
+      onclick="goToLibrary()">
+      <i class="fa-solid fa-book-open bnav-icon"></i>
+      <span>Library</span>
+    </button>
+    <button class="bnav-item bnav-create">
+      <div class="bnav-create-btn">
+        <i class="fa-solid fa-plus"></i>
+      </div>
+    </button>
+    <button class="bnav-item"
+      onclick="goToCommunity()">
+      <i class="fa-solid fa-people-group bnav-icon"></i>
+      <span>Community</span>
+    </button>
+    <button class="bnav-item active">
+      <i class="fa-solid fa-circle-user bnav-icon"></i>
+      <span>Profile</span>
+    </button>
+  </div>
+
+
+  <!-- Scripts -->
+  <script src="../js/supabase.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/profile.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChoirLib — Register</title>
+
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/register.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+<body>
+
+
+  <!-- Header -->
+  <div class="screen-header">
+    <button class="back-btn" onclick="goBack()">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    <h2 class="screen-title">Create Account</h2>
+  </div>
+
+
+  <!-- Form Body -->
+  <div class="form-body">
+
+
+    <!-- Step indicator -->
+    <div class="steps-row">
+      <div class="step done"></div>
+      <div class="step active"></div>
+      <div class="step"></div>
+    </div>
+
+
+    <h3 class="form-heading">Let's get started</h3>
+    <p class="form-sub">Fill in your details to join the community</p>
+
+
+    <!-- Error box -->
+    <div id="register-error" class="error-box hidden">
+      <i class="fa-solid fa-circle-exclamation"></i>
+      <span id="register-error-text"></span>
+    </div>
+
+
+    <!-- Name fields -->
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">First Name</label>
+        <input type="text" id="first-name"
+          class="form-input" placeholder="Emmanuel">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Last Name</label>
+        <input type="text" id="last-name"
+          class="form-input" placeholder="Fon">
+      </div>
+    </div>
+
+
+    <!-- Email -->
+    <div class="form-group">
+      <label class="form-label">Email Address</label>
+      <input type="email" id="email"
+        class="form-input" placeholder="yourname@gmail.com">
+    </div>
+
+
+    <!-- Phone -->
+    <div class="form-group">
+      <label class="form-label">
+        Phone Number
+        <span class="optional">(Optional)</span>
+      </label>
+      <input type="tel" id="phone"
+        class="form-input" placeholder="+237 6XX XXX XXX">
+    </div>
+
+
+    <!-- Password -->
+    <div class="form-group">
+      <label class="form-label">Password</label>
+      <div class="password-wrap">
+        <input type="password" id="password"
+          class="form-input" placeholder="Min. 8 characters">
+        <button class="toggle-pw" id="toggle-password">
+          <i class="fa-solid fa-eye" id="pw-icon"></i>
+        </button>
+      </div>
+      <div class="strength-bar">
+        <div class="strength-fill" id="strength-fill"></div>
+      </div>
+      <p class="strength-text" id="strength-text"></p>
+    </div>
+
+
+    <!-- Divider -->
+    <div class="divider">
+      <div class="divider-line"></div>
+      <span class="divider-text">or sign up with</span>
+      <div class="divider-line"></div>
+    </div>
+
+
+    <!-- Social buttons -->
+    <div class="social-row">
+      <button class="social-btn">
+        <i class="fa-brands fa-google"></i> Google
+      </button>
+      <button class="social-btn">
+        <i class="fa-brands fa-facebook"></i> Facebook
+      </button>
+    </div>
+
+
+    <!-- Submit -->
+    <button class="btn-primary" id="btn-submit-register">
+      Continue
+      <i class="fa-solid fa-arrow-right"></i>
+    </button>
+
+
+    <!-- Switch to login -->
+    <p class="switch-auth">
+      Already have an account?
+      <span class="gold link" onclick="goToLogin()">Sign In</span>
+    </p>
+
+
+  </div>
+
+
+  <!-- Scripts -->
+   <script src="../js/supabase.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/register.js"></script>
+
+
+</body>
+</html>

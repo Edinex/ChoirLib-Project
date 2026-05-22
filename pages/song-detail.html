@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChoirLib — Song Detail</title>
+
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/song-detail.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+
+  <!-- HERO SECTION -->
+  <div class="detail-hero" id="detail-hero">
+    <button class="hero-back" onclick="goBack()">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    <div class="hero-emoji" id="hero-emoji">🎵</div>
+    <button class="hero-more" id="btn-more">
+      <i class="fa-solid fa-ellipsis"></i>
+    </button>
+  </div>
+
+
+  <!-- SONG INFO -->
+  <div class="song-detail-body">
+
+
+    <!-- Title & Composer -->
+    <div class="song-detail-header">
+      <div>
+        <h1 class="detail-title" id="detail-title">
+          Song Title
+        </h1>
+        <p class="detail-composer" id="detail-composer">
+          Composer · Arranger
+        </p>
+      </div>
+      <button class="save-btn" id="btn-save">
+        <i class="fa-regular fa-heart" id="save-icon"></i>
+      </button>
+    </div>
+
+
+    <!-- Tags -->
+    <div class="tags-row" id="tags-row">
+      <!-- Injected by JS -->
+    </div>
+
+
+    <!-- Content Tabs -->
+    <div class="tabs-row">
+      <div class="tab active" data-tab="sheet">
+        Sheet Music
+      </div>
+      <div class="tab" data-tab="audio">Audio</div>
+      <div class="tab" data-tab="video">Video</div>
+      <div class="tab" data-tab="lyrics">Lyrics</div>
+    </div>
+
+
+    <!-- TAB CONTENTS -->
+
+
+    <!-- Sheet Music Tab -->
+    <div class="tab-content active" id="tab-sheet">
+
+
+      <!-- Staff / Solfa Toggle -->
+      <div class="notation-toggle">
+        <button class="notation-btn active"
+          id="btn-staff">
+          Staff Notation
+        </button>
+        <button class="notation-btn"
+          id="btn-solfa">
+          Sol-fa Notation
+        </button>
+      </div>
+
+
+      <!-- PDF Preview -->
+      <div class="pdf-preview">
+        <i class="fa-solid fa-file-pdf pdf-icon"></i>
+        <div class="pdf-name" id="pdf-name">
+          Loading...
+        </div>
+        <div class="pdf-pages">3 pages · 2.4 MB</div>
+      </div>
+
+
+      <!-- Action Buttons -->
+      <div class="action-row">
+        <button class="action-btn btn-primary"
+          id="btn-view-pdf">
+          <i class="fa-solid fa-eye"></i>
+          View PDF
+        </button>
+        <button class="action-btn btn-gold"
+          id="btn-download">
+          <i class="fa-solid fa-download"></i>
+          Download
+        </button>
+      </div>
+
+
+      <div class="action-row">
+        <button class="action-btn btn-outline"
+          id="btn-convert">
+          <i class="fa-solid fa-rotate"></i>
+          Convert to Sol-fa
+        </button>
+        <button class="action-btn btn-outline"
+          id="btn-share">
+          <i class="fa-solid fa-share-nodes"></i>
+          Share
+        </button>
+      </div>
+
+
+    </div>
+
+
+    <!-- Audio Tab -->
+    <div class="tab-content" id="tab-audio">
+
+
+      <!-- Full choir recording -->
+      <div class="audio-card">
+        <div class="audio-title">
+          <i class="fa-solid fa-music"></i>
+          Full Choir Recording
+        </div>
+        <!-- Progress bar -->
+        <div class="audio-progress">
+          <div class="audio-fill"
+            id="audio-fill-1"
+            style="width: 0%">
+          </div>
+        </div>
+        <div class="audio-times">
+          <span id="audio-time-1">0:00</span>
+          <span>3:28</span>
+        </div>
+        <!-- Controls -->
+        <div class="audio-controls">
+          <button class="audio-btn">
+            <i class="fa-solid fa-backward-step"></i>
+          </button>
+          <button class="audio-btn">
+            <i class="fa-solid fa-backward"></i>
+          </button>
+          <button class="audio-play"
+            id="btn-play-1"
+            onclick="togglePlay(1)">
+            <i class="fa-solid fa-play"
+              id="play-icon-1"></i>
+          </button>
+          <button class="audio-btn">
+            <i class="fa-solid fa-forward"></i>
+          </button>
+          <button class="audio-btn">
+            <i class="fa-solid fa-forward-step"></i>
+          </button>
+        </div>
+      </div>
+
+
+      <!-- Soprano part -->
+      <div class="audio-card">
+        <div class="audio-title">
+          <i class="fa-solid fa-music"></i>
+          Soprano Part Only
+        </div>
+        <div class="audio-progress">
+          <div class="audio-fill"
+            id="audio-fill-2"
+            style="width: 0%">
+          </div>
+        </div>
+        <div class="audio-times">
+          <span id="audio-time-2">0:00</span>
+          <span>3:28</span>
+        </div>
+        <div class="audio-controls">
+          <button class="audio-btn">
+            <i class="fa-solid fa-backward-step"></i>
+          </button>
+          <button class="audio-btn">
+            <i class="fa-solid fa-backward"></i>
+          </button>
+          <button class="audio-play"
+            id="btn-play-2"
+            onclick="togglePlay(2)">
+            <i class="fa-solid fa-play"
+              id="play-icon-2"></i>
+          </button>
+          <button class="audio-btn">
+            <i class="fa-solid fa-forward"></i>
+          </button>
+          <button class="audio-btn">
+            <i class="fa-solid fa-forward-step"></i>
+          </button>
+        </div>
+      </div>
+
+
+    </div>
+
+
+    <!-- Video Tab -->
+    <div class="tab-content" id="tab-video">
+
+
+      <!-- YouTube embed -->
+      <div class="video-card">
+        <div class="video-thumb">
+          <i class="fa-solid fa-clapperboard"></i>
+          <button class="video-play-btn">
+            <i class="fa-solid fa-play"></i>
+          </button>
+        </div>
+        <div class="video-info">
+          <div class="video-title">
+            Full Performance — YouTube
+          </div>
+          <div class="video-platform youtube">
+            <i class="fa-brands fa-youtube"></i>
+            YouTube
+          </div>
+        </div>
+      </div>
+
+
+      <!-- TikTok embed -->
+      <div class="video-card">
+        <div class="video-thumb tiktok-thumb">
+          <i class="fa-solid fa-music"></i>
+          <button class="video-play-btn">
+            <i class="fa-solid fa-play"></i>
+          </button>
+        </div>
+        <div class="video-info">
+          <div class="video-title">
+            Conductor Tutorial — TikTok
+          </div>
+          <div class="video-platform tiktok">
+            <i class="fa-brands fa-tiktok"></i>
+            TikTok
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+    <!-- Lyrics Tab -->
+    <div class="tab-content" id="tab-lyrics">
+
+
+      <div class="lyrics-box" id="lyrics-box">
+        <!-- Injected by JS -->
+      </div>
+
+
+    </div>
+
+
+    <!-- PAID CONTENT LOCK -->
+    <div id="paid-overlay" class="paid-overlay hidden">
+      <div class="paid-card">
+        <div class="paid-icon">🔒</div>
+        <h3 class="paid-title">Premium Content</h3>
+        <p class="paid-desc">
+          Purchase to access full sheet music,
+          audio recordings and video tutorials.
+        </p>
+        <button class="btn-gold" id="btn-purchase">
+          Buy Now — $<span id="paid-price">2</span>.00
+        </button>
+        <div class="pay-methods">
+          <div class="pay-method">💳 Card</div>
+          <div class="pay-method">📱 MTN Money</div>
+          <div class="pay-method">🟠 Orange Money</div>
+        </div>
+        <p class="pay-note">
+          Delivered to your email after payment
+        </p>
+      </div>
+    </div>
+
+
+  </div>
+
+
+  <!-- Scripts -->
+   <script src="../js/supabase.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/library.js"></script>
+  <script src="../js/song-detail.js"></script>
+
+
+</body>
+</html>

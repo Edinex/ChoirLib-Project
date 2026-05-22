@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChoirLib — Library</title>
+
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/home.css">
+  <link rel="stylesheet" href="../styles/library.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+
+  <!-- TOP NAV -->
+  <div class="top-nav">
+    <h2 class="top-nav-logo">Library</h2>
+    <div class="top-nav-icons">
+      <button class="nav-icon-btn" id="btn-toggle-view">
+        <i class="fa-solid fa-list" id="view-icon"></i>
+      </button>
+    </div>
+  </div>
+
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      <input
+        type="text"
+        id="search-input"
+        class="search-input"
+        placeholder="Search songs, composers, keywords..."
+      >
+      <button class="search-clear hidden" id="btn-clear-search">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+
+    <!-- Genre Filter Chips -->
+    <div class="filter-scroll" id="genre-filters">
+      <div class="filter-chip active" data-filter="all">All</div>
+      <div class="filter-chip" data-filter="gospel">Gospel</div>
+      <div class="filter-chip" data-filter="classical">Classical</div>
+      <div class="filter-chip" data-filter="afrobeats">Afrobeats</div>
+      <div class="filter-chip" data-filter="traditional">Traditional</div>
+      <div class="filter-chip" data-filter="contemporary">Contemporary</div>
+    </div>
+
+
+    <!-- Voice Part Filter -->
+    <div class="filter-scroll" id="voice-filters">
+      <div class="filter-chip active" data-voice="all">All Parts</div>
+      <div class="filter-chip" data-voice="satb">SATB</div>
+      <div class="filter-chip" data-voice="soprano">Soprano</div>
+      <div class="filter-chip" data-voice="alto">Alto</div>
+      <div class="filter-chip" data-voice="tenor">Tenor</div>
+      <div class="filter-chip" data-voice="bass">Bass</div>
+    </div>
+
+
+    <!-- Results Header -->
+    <div class="section-header">
+      <h3 class="section-title">
+        <span id="results-count">12</span> Songs Found
+      </h3>
+      <div class="sort-btn" id="btn-sort">
+        Sort: Recent ↓
+      </div>
+    </div>
+
+
+    <!-- Songs List -->
+    <div class="songs-list" id="songs-list">
+
+
+      <!-- Songs are injected by JavaScript -->
+
+
+    </div>
+
+
+    <!-- No results message -->
+    <div id="no-results" class="no-results hidden">
+      <i class="fa-solid fa-music-slash"></i>
+      <p>No songs found</p>
+      <span>Try a different search or filter</span>
+    </div>
+
+
+  </div>
+
+
+  <!-- BOTTOM NAV -->
+  <div class="bottom-nav">
+    <button class="bnav-item" onclick="goToHome()">
+      <i class="fa-solid fa-house bnav-icon"></i>
+      <span>Home</span>
+    </button>
+    <button class="bnav-item active">
+      <i class="fa-solid fa-book-open bnav-icon"></i>
+      <span>Library</span>
+    </button>
+    <button class="bnav-item bnav-create">
+      <div class="bnav-create-btn">
+        <i class="fa-solid fa-plus"></i>
+      </div>
+    </button>
+    <button class="bnav-item" onclick="goToCommunity()">
+      <i class="fa-solid fa-people-group bnav-icon"></i>
+      <span>Community</span>
+    </button>
+    <button class="bnav-item" onclick="goToProfile()">
+      <i class="fa-solid fa-circle-user bnav-icon"></i>
+      <span>Profile</span>
+    </button>
+  </div>
+
+
+  <!-- Scripts -->
+   <script src="../js/supabase.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/library.js"></script>
+
+
+</body>
+</html>

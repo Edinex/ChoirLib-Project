@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChoirLib — Community</title>
+
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/home.css">
+  <link rel="stylesheet" href="../styles/community.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+
+  <!-- TOP NAV -->
+  <div class="top-nav">
+    <h2 class="top-nav-logo">Community</h2>
+    <div class="top-nav-icons">
+      <button class="nav-icon-btn" id="btn-search-community">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+      <button class="nav-icon-btn" id="btn-new-community">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+    </div>
+  </div>
+
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+
+    <!-- My Choirs Section -->
+    <div class="section-header">
+      <h3 class="section-title">My Choirs</h3>
+      <span class="section-link">See all</span>
+    </div>
+
+
+    <!-- Choir bubbles -->
+    <div class="choirs-scroll" id="my-choirs">
+
+
+      <div class="choir-bubble active-choir"
+        onclick="openChoir('st-josephs')">
+        <div class="choir-bubble-avatar">🎵</div>
+        <div class="choir-bubble-name">St. Joseph's</div>
+      </div>
+
+
+      <div class="choir-bubble"
+        onclick="openChoir('youth-choir')">
+        <div class="choir-bubble-avatar">🎶</div>
+        <div class="choir-bubble-name">Youth Choir</div>
+      </div>
+
+
+      <div class="choir-bubble add-choir"
+        onclick="showJoinChoir()">
+        <div class="choir-bubble-avatar add-avatar">
+          <i class="fa-solid fa-plus"></i>
+        </div>
+        <div class="choir-bubble-name">Join Choir</div>
+      </div>
+
+
+    </div>
+
+
+    <!-- Discover Communities -->
+    <div class="section-header">
+      <h3 class="section-title">Discover Communities</h3>
+      <span class="section-link" id="btn-see-all">
+        See all
+      </span>
+    </div>
+
+
+    <!-- Community Cards -->
+    <div id="communities-list">
+
+
+      <!-- Community 1 -->
+      <div class="community-card"
+        onclick="openCommunity('sight-reading')">
+        <div class="community-icon" style="background:
+          linear-gradient(135deg,#2D1054,#6B21A8);">
+          📖
+        </div>
+        <div class="community-info">
+          <div class="community-name">
+            Sight Reading Help
+          </div>
+          <div class="community-desc">
+            Tips & exercises for better sight reading
+          </div>
+          <div class="community-meta">
+            <span>
+              <i class="fa-solid fa-users"></i>
+              342 members
+            </span>
+            <span>
+              <i class="fa-solid fa-comment"></i>
+              24 posts today
+            </span>
+          </div>
+        </div>
+        <button class="join-btn"
+          id="join-sight-reading"
+          onclick="toggleJoin(event,
+            'sight-reading')">
+          Join
+        </button>
+      </div>
+
+
+      <!-- Community 2 -->
+      <div class="community-card"
+        onclick="openCommunity('cameroon-composers')">
+        <div class="community-icon" style="background:
+          linear-gradient(135deg,#1A0533,#4C1D95);">
+          🎵
+        </div>
+        <div class="community-info">
+          <div class="community-name">
+            Cameroon Composers
+          </div>
+          <div class="community-desc">
+            Local composers sharing original work
+          </div>
+          <div class="community-meta">
+            <span>
+              <i class="fa-solid fa-users"></i>
+              128 members
+            </span>
+            <span>
+              <i class="fa-solid fa-comment"></i>
+              8 posts today
+            </span>
+          </div>
+        </div>
+        <button class="join-btn joined"
+          id="join-cameroon-composers"
+          onclick="toggleJoin(event,
+            'cameroon-composers')">
+          Joined
+        </button>
+      </div>
+
+
+      <!-- Community 3 -->
+      <div class="community-card"
+        onclick="openCommunity('advent-music')">
+        <div class="community-icon" style="background:
+          linear-gradient(135deg,#0D1A0D,#16A34A);">
+          🎄
+        </div>
+        <div class="community-info">
+          <div class="community-name">
+            Advent Season Music
+          </div>
+          <div class="community-desc">
+            Share and discuss Advent repertoire
+          </div>
+          <div class="community-meta">
+            <span>
+              <i class="fa-solid fa-users"></i>
+              204 members
+            </span>
+            <span>
+              <i class="fa-solid fa-comment"></i>
+              12 posts today
+            </span>
+          </div>
+        </div>
+        <button class="join-btn"
+          id="join-advent-music"
+          onclick="toggleJoin(event,
+            'advent-music')">
+          Join
+        </button>
+      </div>
+
+
+      <!-- Community 4 -->
+      <div class="community-card"
+        onclick="openCommunity('solfa-learners')">
+        <div class="community-icon" style="background:
+          linear-gradient(135deg,#1A0533,#D4A017);">
+          🎼
+        </div>
+        <div class="community-info">
+          <div class="community-name">
+            Tonic Sol-fa Learners
+          </div>
+          <div class="community-desc">
+            Learn and practice tonic sol-fa notation
+          </div>
+          <div class="community-meta">
+            <span>
+              <i class="fa-solid fa-users"></i>
+              89 members
+            </span>
+            <span>
+              <i class="fa-solid fa-comment"></i>
+              5 posts today
+            </span>
+          </div>
+        </div>
+        <button class="join-btn"
+          id="join-solfa-learners"
+          onclick="toggleJoin(event,
+            'solfa-learners')">
+          Join
+        </button>
+      </div>
+
+
+      <!-- Community 5 -->
+      <div class="community-card"
+        onclick="openCommunity('gospel-africa')">
+        <div class="community-icon" style="background:
+          linear-gradient(135deg,#1A0D0D,#DC2626);">
+          🙏
+        </div>
+        <div class="community-info">
+          <div class="community-name">
+            Gospel Music Africa
+          </div>
+          <div class="community-desc">
+            African gospel choirs and composers
+          </div>
+          <div class="community-meta">
+            <span>
+              <i class="fa-solid fa-users"></i>
+              517 members
+            </span>
+            <span>
+              <i class="fa-solid fa-comment"></i>
+              31 posts today
+            </span>
+          </div>
+        </div>
+        <button class="join-btn"
+          id="join-gospel-africa"
+          onclick="toggleJoin(event,
+            'gospel-africa')">
+          Join
+        </button>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+  <!-- JOIN CHOIR MODAL -->
+  <div id="join-choir-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Join a Choir</h3>
+        <button class="modal-close"
+          onclick="closeModal('join-choir-modal')">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <p class="modal-desc">
+        Enter the invite code given by your
+        choir director
+      </p>
+      <div class="form-group">
+        <label class="form-label">Invite Code</label>
+        <input
+          type="text"
+          id="modal-choir-code"
+          class="form-input"
+          placeholder="e.g. CHOIR001"
+          style="text-transform: uppercase;"
+        >
+      </div>
+      <div id="modal-choir-result"
+        class="hidden"
+        style="margin-bottom:12px;">
+      </div>
+      <button class="btn-primary"
+        id="btn-modal-join">
+        <i class="fa-solid fa-right-to-bracket"></i>
+        Join Choir
+      </button>
+    </div>
+  </div>
+
+
+  <!-- FORUM / COMMUNITY PAGE -->
+  <div id="forum-page" class="forum-overlay hidden">
+
+
+    <!-- Forum Header -->
+    <div class="forum-header">
+      <button class="back-btn"
+        onclick="closeForum()">
+        <i class="fa-solid fa-arrow-left"></i>
+      </button>
+      <h2 class="screen-title"
+        id="forum-title">Community</h2>
+      <button class="nav-icon-btn">
+        <i class="fa-solid fa-ellipsis"></i>
+      </button>
+    </div>
+
+
+    <!-- Forum Info Banner -->
+    <div class="forum-banner">
+      <div class="forum-banner-icon"
+        id="forum-banner-icon">🎵</div>
+      <div>
+        <div class="forum-banner-name"
+          id="forum-banner-name">
+          Community Name
+        </div>
+        <div class="forum-banner-meta"
+          id="forum-banner-meta">
+          128 members · 8 posts today
+        </div>
+      </div>
+      <div class="forum-banner-badge">Joined</div>
+    </div>
+
+
+    <!-- New Post Input -->
+    <div class="new-post-row">
+      <div class="new-post-avatar">👤</div>
+      <input
+        type="text"
+        id="new-post-input"
+        class="new-post-input"
+        placeholder="Share something..."
+      >
+      <button class="new-post-btn"
+        id="btn-post">
+        Post
+      </button>
+    </div>
+
+
+    <!-- Posts List -->
+    <div class="posts-list" id="posts-list">
+      <!-- Injected by JS -->
+    </div>
+
+
+  </div>
+
+
+  <!-- BOTTOM NAV -->
+  <div class="bottom-nav">
+    <button class="bnav-item"
+      onclick="goToHome()">
+      <i class="fa-solid fa-house bnav-icon"></i>
+      <span>Home</span>
+    </button>
+    <button class="bnav-item"
+      onclick="goToLibrary()">
+      <i class="fa-solid fa-book-open bnav-icon"></i>
+      <span>Library</span>
+    </button>
+    <button class="bnav-item bnav-create">
+      <div class="bnav-create-btn">
+        <i class="fa-solid fa-plus"></i>
+      </div>
+    </button>
+    <button class="bnav-item active">
+      <i class="fa-solid fa-people-group bnav-icon"></i>
+      <span>Community</span>
+    </button>
+    <button class="bnav-item"
+      onclick="goToProfile()">
+      <i class="fa-solid fa-circle-user bnav-icon"></i>
+      <span>Profile</span>
+    </button>
+  </div>
+
+
+  <!-- Scripts -->
+   <script src="../js/supabase.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/community.js"></script>
+
+
+</body>
+</html>

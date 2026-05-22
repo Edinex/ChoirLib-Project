@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChoirLib — Profile Setup</title>
+
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/profile-setup.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+
+  <!-- Header -->
+  <div class="screen-header">
+    <button class="back-btn" onclick="goBack()">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    <h2 class="screen-title">Your Profile</h2>
+  </div>
+
+
+  <!-- Form Body -->
+  <div class="form-body">
+
+
+    <!-- Step indicator -->
+    <div class="steps-row">
+      <div class="step done"></div>
+      <div class="step done"></div>
+      <div class="step active"></div>
+    </div>
+
+
+    <h3 class="form-heading">Almost there!</h3>
+    <p class="form-sub">Tell us a bit about yourself</p>
+
+
+    <!-- Avatar Upload -->
+    <div class="avatar-section">
+      <div class="avatar-ring" id="avatar-ring">
+        <i class="fa-solid fa-user" id="avatar-icon"></i>
+        <img
+          id="avatar-preview"
+          class="avatar-preview hidden"
+          src=""
+          alt="Profile photo"
+        >
+        <div class="avatar-badge">
+          <i class="fa-solid fa-plus"></i>
+        </div>
+      </div>
+      <p class="avatar-hint">Tap to upload photo</p>
+      <!-- Hidden file input -->
+      <input
+        type="file"
+        id="avatar-input"
+        accept="image/*"
+        class="hidden"
+      >
+    </div>
+
+
+    <!-- Display Name -->
+    <div class="form-group">
+      <label class="form-label">Display Name</label>
+      <input
+        type="text"
+        id="display-name"
+        class="form-input"
+        placeholder="How should we call you?"
+      >
+    </div>
+
+
+    <!-- Voice Part -->
+    <div class="form-group">
+      <label class="form-label">Your Voice Part</label>
+      <div class="chips-row" id="voice-chips">
+        <div class="chip" data-value="soprano">Soprano</div>
+        <div class="chip" data-value="alto">Alto</div>
+        <div class="chip" data-value="tenor">Tenor</div>
+        <div class="chip" data-value="bass">Bass</div>
+        <div class="chip" data-value="other">Other</div>
+      </div>
+    </div>
+
+
+    <!-- Role -->
+    <div class="form-group">
+      <label class="form-label">Your Role</label>
+      <div class="chips-row" id="role-chips">
+        <div class="chip" data-value="chorister">Chorister</div>
+        <div class="chip" data-value="director">Director</div>
+        <div class="chip" data-value="composer">Composer</div>
+      </div>
+    </div>
+
+
+    <!-- Choir Code -->
+    <div class="form-group">
+      <label class="form-label">
+        Join a Choir
+        <span class="optional">(Optional)</span>
+      </label>
+      <div class="choir-input-row">
+        <input
+          type="text"
+          id="choir-code"
+          class="form-input"
+          placeholder="Enter invite code"
+        >
+        <button class="btn-join" id="btn-join-choir">
+          Join
+        </button>
+      </div>
+      <p class="choir-hint" id="choir-hint"></p>
+    </div>
+
+
+    <!-- Error box -->
+    <div id="setup-error" class="error-box hidden">
+      <i class="fa-solid fa-circle-exclamation"></i>
+      <span id="setup-error-text"></span>
+    </div>
+
+
+    <!-- Complete Button -->
+    <button class="btn-gold" id="btn-complete-setup">
+      Complete Setup
+      <i class="fa-solid fa-party-horn"></i>
+    </button>
+
+
+    <!-- Skip -->
+    <p class="switch-auth">
+      <span
+        class="text-muted link"
+        onclick="goToHome()"
+      >
+        Skip for now
+      </span>
+    </p>
+
+
+  </div>
+
+
+  <!-- Scripts -->
+   <script src="../js/supabase.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/profile-setup.js"></script>
+
+
+</body>
+</html>

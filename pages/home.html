@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChoirLib — Home</title>
+
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/home.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+
+  <!-- =============================== -->
+  <!-- TOP NAVIGATION BAR              -->
+  <!-- =============================== -->
+  <div class="top-nav">
+    <div class="top-nav-logo">
+      Choir<span class="gold">Lib</span>
+    </div>
+    <div class="top-nav-icons">
+      <button class="nav-icon-btn" id="btn-notifications">
+        <i class="fa-solid fa-bell"></i>
+        <span class="notif-dot"></span>
+      </button>
+      <button class="nav-icon-btn" id="btn-profile">
+        <i class="fa-solid fa-circle-user"></i>
+      </button>
+    </div>
+  </div>
+
+
+  <!-- =============================== -->
+  <!-- MAIN CONTENT                    -->
+  <!-- =============================== -->
+  <div class="main-content">
+
+
+    <!-- Greeting -->
+    <div class="greeting-section">
+      <p class="greeting-hi">Good morning,</p>
+      <h2 class="greeting-name">
+        <span id="user-greeting">Chorister</span>
+        <span class="gold">🎵</span>
+      </h2>
+    </div>
+
+
+    <!-- Stats Row -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num" id="stat-songs">248</div>
+        <div class="stat-label">Songs</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-choirs">12</div>
+        <div class="stat-label">Choirs</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-downloads">0</div>
+        <div class="stat-label">Downloads</div>
+      </div>
+    </div>
+
+
+    <!-- Banner -->
+    <div class="banner-card">
+      <div class="banner-bg-icon">🎼</div>
+      <div class="banner-tag">✨ NEW FEATURE</div>
+      <div class="banner-title">AI Composition Assistant</div>
+      <div class="banner-sub">
+        Hum a melody — get full sheet music instantly
+      </div>
+      <button class="banner-btn" id="btn-try-ai">
+        Try it now →
+      </button>
+    </div>
+
+
+    <!-- Recently Added -->
+    <div class="section-header">
+      <h3 class="section-title">Recently Added</h3>
+      <span class="section-link" onclick="goToLibrary()">
+        See all
+      </span>
+    </div>
+
+
+    <!-- Song Cards List -->
+    <div class="songs-list" id="recent-songs">
+
+
+      <!-- Song Card 1 -->
+      <div class="song-card" onclick="goToSongDetail('ave-maria')">
+        <div class="song-thumb">🎵</div>
+        <div class="song-info">
+          <div class="song-title">Ave Maria — Schubert</div>
+          <div class="song-meta">SATB · Classical · Latin</div>
+        </div>
+        <div class="song-badge badge-free">FREE</div>
+      </div>
+
+
+      <!-- Song Card 2 -->
+      <div class="song-card" onclick="goToSongDetail('hallelujah')">
+        <div class="song-thumb">🎶</div>
+        <div class="song-info">
+          <div class="song-title">Hallelujah Chorus</div>
+          <div class="song-meta">SATB · Gospel · English</div>
+        </div>
+        <div class="song-badge badge-new">NEW</div>
+      </div>
+
+
+      <!-- Song Card 3 -->
+      <div class="song-card" onclick="goToSongDetail('o-holy-night')">
+        <div class="song-thumb">🎼</div>
+        <div class="song-info">
+          <div class="song-title">O Holy Night</div>
+          <div class="song-meta">SATB · Classical · French</div>
+        </div>
+        <div class="song-badge badge-paid">$2</div>
+      </div>
+
+
+      <!-- Song Card 4 -->
+      <div class="song-card" onclick="goToSongDetail('amazing-grace')">
+        <div class="song-thumb">🎵</div>
+        <div class="song-info">
+          <div class="song-title">Amazing Grace</div>
+          <div class="song-meta">Unison · Gospel · English</div>
+        </div>
+        <div class="song-badge badge-free">FREE</div>
+      </div>
+
+
+    </div>
+
+
+    <!-- Trending Section -->
+    <div class="section-header">
+      <h3 class="section-title">Trending This Week</h3>
+      <span class="section-link" onclick="goToLibrary()">
+        See all
+      </span>
+    </div>
+
+
+    <!-- Horizontal scroll cards -->
+    <div class="trending-scroll">
+
+
+      <div class="trending-card"
+        onclick="goToSongDetail('nkosi')">
+        <div class="trending-thumb">🎵</div>
+        <div class="trending-title">Nkosi Sikeleli</div>
+        <div class="trending-meta">Traditional · Free</div>
+      </div>
+
+
+      <div class="trending-card"
+        onclick="goToSongDetail('sanctus')">
+        <div class="trending-thumb">🎶</div>
+        <div class="trending-title">Sanctus</div>
+        <div class="trending-meta">Classical · Free</div>
+      </div>
+
+
+      <div class="trending-card"
+        onclick="goToSongDetail('bless-the-lord')">
+        <div class="trending-thumb">🎼</div>
+        <div class="trending-title">Bless The Lord</div>
+        <div class="trending-meta">Gospel · $1</div>
+      </div>
+
+
+      <div class="trending-card"
+        onclick="goToSongDetail('gloria')">
+        <div class="trending-thumb">🎵</div>
+        <div class="trending-title">Gloria in Excelsis</div>
+        <div class="trending-meta">Classical · Free</div>
+      </div>
+
+
+    </div>
+
+
+    <!-- Featured Composers -->
+    <div class="section-header">
+      <h3 class="section-title">Featured Composers</h3>
+      <span class="section-link">See all</span>
+    </div>
+
+
+    <div class="composers-scroll">
+
+
+      <div class="composer-card">
+        <div class="composer-avatar">👨‍🎤</div>
+        <div class="composer-name">Jean-Pierre Mballa</div>
+        <div class="composer-songs">42 songs</div>
+      </div>
+
+
+      <div class="composer-card">
+        <div class="composer-avatar">👩‍🎤</div>
+        <div class="composer-name">Marie Tchamgoue</div>
+        <div class="composer-songs">28 songs</div>
+      </div>
+
+
+      <div class="composer-card">
+        <div class="composer-avatar">🎵</div>
+        <div class="composer-name">Paul Nkemdirim</div>
+        <div class="composer-songs">35 songs</div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+  <!-- =============================== -->
+  <!-- BOTTOM NAVIGATION               -->
+  <!-- =============================== -->
+  <div class="bottom-nav">
+
+
+    <button class="bnav-item active" id="bnav-home">
+      <i class="fa-solid fa-house bnav-icon"></i>
+      <span>Home</span>
+    </button>
+
+
+    <button class="bnav-item" id="bnav-library"
+      onclick="goToLibrary()">
+      <i class="fa-solid fa-book-open bnav-icon"></i>
+      <span>Library</span>
+    </button>
+
+
+    <button class="bnav-item bnav-create" id="bnav-create">
+      <div class="bnav-create-btn">
+        <i class="fa-solid fa-plus"></i>
+      </div>
+    </button>
+
+
+    <button class="bnav-item" id="bnav-community"
+      onclick="goToCommunity()">
+      <i class="fa-solid fa-people-group bnav-icon"></i>
+      <span>Community</span>
+    </button>
+
+
+    <button class="bnav-item" id="bnav-profile"
+      onclick="goToProfile()">
+      <i class="fa-solid fa-circle-user bnav-icon"></i>
+      <span>Profile</span>
+    </button>
+
+
+  </div>
+
+
+  <!-- Scripts -->
+   <script src="../js/supabase.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/home.js"></script>
+
+
+</body>
+</html>
