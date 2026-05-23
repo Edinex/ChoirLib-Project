@@ -10,11 +10,11 @@
 // Supabase Dashboard → Settings → API
 
 
-const SUPABASE_URL = 'YOUR_SUPABASE_URL'
+const SUPABASE_URL = 'https://nrlxznwmvcnoiitacmhy.supabase.co'
 // Example: 'https://abcdefgh.supabase.co'
 
 
-const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY'
+const SUPABASE_ANON_KEY = 'sb_publishable_CfUGQonuV5JSFZo-rq6tsw_sM73BDG8'
 // Example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6...'
 
 
