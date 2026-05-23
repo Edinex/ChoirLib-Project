@@ -82,7 +82,7 @@ document.getElementById('password')
 
 // --- Form validation ---
 document.getElementById('btn-submit-register')
-  .addEventListener('click', function() {
+  .addEventListener('click', async function() {
 
 
     const firstName = document.getElementById('first-name').value.trim()
@@ -132,19 +132,66 @@ document.getElementById('btn-submit-register')
     // All good!
     errorBox.classList.add('hidden')
 
+    // Show loading state
+    const submitBtn = document
+      .getElementById('btn-submit-register')
+    submitBtn.textContent = 'Creating account...'
+    submitBtn.disabled    = true
 
-    // Save user data temporarily
-    localStorage.setItem('newUser', JSON.stringify({
-      firstName : firstName,
-      lastName  : lastName,
-      email     : email,
-    }))
+    // Check if Supabase is connected
+    if (typeof db !== 'undefined'
+      && SUPABASE_URL !== 'YOUR_SUPABASE_URL') {
 
+      // Use real Supabase registration
+      const result = await registerUser(
+        firstName,
+        lastName,
+        email,
+        password
+      )
 
-    // Go to profile setup
-    alert('Welcome ' + firstName + '! 🎉')
-    setTimeout(function(){
-      goToProfileSetup() },800)
+      if (result.success) {
+
+        // Save to localStorage too
+        localStorage.setItem('newUser',
+          JSON.stringify({
+            firstName: firstName,
+            lastName:  lastName,
+            email:     email,
+          })
+        )
+
+        alert('Welcome ' + firstName + '! 🎉')
+        goToProfileSetup()
+
+      } else {
+
+        // Show error from Supabase
+        errorText.textContent = result.message
+        errorBox.classList.remove('hidden')
+        submitBtn.textContent = 'Continue'
+        submitBtn.disabled    = false
+
+      }
+
+    } else {
+
+      // Supabase not connected yet
+      // Use localStorage for now
+      localStorage.setItem('newUser',
+        JSON.stringify({
+          firstName: firstName,
+          lastName:  lastName,
+          email:     email,
+        })
+      )
+
+      alert('Welcome ' + firstName + '! 🎉')
+      setTimeout(function() {
+        goToProfileSetup()
+      }, 800)
+
+    }
 
 
   })

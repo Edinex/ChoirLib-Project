@@ -26,7 +26,7 @@ document.getElementById('toggle-login-pw')
 
 // --- Sign In button ---
 document.getElementById('btn-sign-in')
-  .addEventListener('click', function() {
+  .addEventListener('click', async function() {
 
 
     // Read what user typed
@@ -81,63 +81,87 @@ document.getElementById('btn-sign-in')
     }
 
 
-    // --- Check against stored user ---
-    // (Later this will check Supabase database)
-    const storedUser = localStorage.getItem('newUser')
+    // Show loading state
+    const signInBtn = document
+      .getElementById('btn-sign-in')
+    signInBtn.textContent = 'Signing in...'
+    signInBtn.disabled    = true
 
+    // Check if Supabase is connected
+    if (typeof db !== 'undefined'
+      && SUPABASE_URL !== 'YOUR_SUPABASE_URL') {
 
-    if (storedUser) {
+      // Use real Supabase login
+      const result = await loginUser(email, password)
 
+      if (result.success) {
 
-      // Parse the stored user data
-      const user = JSON.parse(storedUser)
-
-
-      // Check if email matches
-      if (user.email === email) {
-
-
-        // Login successful!
         successText.textContent =
-          'Welcome back, ' + user.firstName + '! 🎉'
+          'Welcome back! 🎉'
         successBox.classList.remove('hidden')
 
-
-        // Store logged in user
-        localStorage.setItem('loggedInUser',
-          JSON.stringify(user)
-        )
-
-
-        // Go to home page after 1.5 seconds
         setTimeout(function() {
           goToHome()
         }, 1500)
 
-
       } else {
 
-
-        // Email doesn't match
-        errorText.textContent =
-          'Email or password is incorrect'
+        errorText.textContent  = result.message
         errorBox.classList.remove('hidden')
-
+        signInBtn.textContent  = 'Sign In'
+        signInBtn.disabled     = false
 
       }
 
-
     } else {
 
+      // Supabase not connected yet
+      // Use localStorage fallback
+      const storedUser =
+        localStorage.getItem('newUser')
 
-      // No user registered yet
-      errorText.textContent =
-        'No account found. Please create an account first.'
-      errorBox.classList.remove('hidden')
+      if (storedUser) {
 
+        const user = JSON.parse(storedUser)
+
+        if (user.email === email) {
+
+          successText.textContent =
+            'Welcome back, '
+            + user.firstName + '! 🎉'
+          successBox.classList.remove('hidden')
+
+          localStorage.setItem(
+            'loggedInUser',
+            JSON.stringify(user)
+          )
+
+          setTimeout(function() {
+            goToHome()
+          }, 1500)
+
+        } else {
+
+          errorText.textContent =
+            'Email or password is incorrect'
+          errorBox.classList.remove('hidden')
+          signInBtn.textContent = 'Sign In'
+          signInBtn.disabled    = false
+
+        }
+
+      } else {
+
+        errorText.textContent =
+          'No account found. '
+          + 'Please create an account first.'
+        errorBox.classList.remove('hidden')
+        signInBtn.textContent = 'Sign In'
+        signInBtn.disabled    = false
+
+      }
 
     }
-
 
   })
 
